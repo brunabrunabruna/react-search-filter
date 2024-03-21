@@ -1,9 +1,11 @@
 import { ICountry, getCountryCode, getEmojiFlag } from "countries-list";
 import React from "react";
+import CountryPopup from "./CountryPopup";
 
 const CountryCard = (props: {
   country: ICountry;
   key: number;
+  selectedCountry: ICountry | null;
   handleClick: () => void;
 }) => {
   const countryCode = getCountryCode(props.country.name);
@@ -20,10 +22,13 @@ const CountryCard = (props: {
   // };
   return (
     <div>
-      <div className="country">
+      <div className="country" onClick={props.handleClick}>
         <p>{props.country.name}</p>
         <p className="flag">{countryCode ? getEmojiFlag(countryCode) : ""}</p>
       </div>
+      {props.country === props.selectedCountry && (
+        <CountryPopup country={props.country} />
+      )}
     </div>
   );
 };
