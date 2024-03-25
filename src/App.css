@@ -20,6 +20,8 @@
   font-family: "Roboto";
   font-size: 1.5rem;
   --dark-gray: #2f3130;
+  --lighter-background: #cfcfcf;
+  background-color: var(--lighter-background);
 }
 .app {
   display: flex;
@@ -36,6 +38,7 @@
   padding-left: 10px;
   position: fixed;
   top: 20px;
+  z-index: 998;
 }
 
 .countries {
@@ -45,6 +48,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .country {
   background-color: gray;
   width: 250px;
@@ -58,8 +62,13 @@
   flex-wrap: wrap;
   /* flex-direction: column; */
   /* position: relative; */
+  transition: all 0.5s;
 }
 
+.country:hover {
+  filter: drop-shadow(-3px 3px 5px rgba(0, 0, 0, 0.7));
+  cursor: pointer;
+}
 .country-wrapper {
   display: flex;
 }
@@ -70,24 +79,4 @@
   /* top: -3rem; */
   /* position: absolute; */
   /* margin-top: 4rem; */
-}
-
-/* .extra-infos-card {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: center;
-
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 3rem;
-
-  background-color: cornflowerblue;
-  transition: all 1s linear;
-} */
-.extra-infos {
-  width: 300px;
-  height: 300px;
 }
