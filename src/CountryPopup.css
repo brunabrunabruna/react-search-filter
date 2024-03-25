@@ -1,20 +1,38 @@
 .country-popup {
   width: 25rem;
-  height: 20rem;
+  /* height: 20rem; */
   background-color: var(--dark-gray);
   border-radius: 1rem;
   margin-top: 20px;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 1.5rem;
+}
+.country-popup-layout {
+  position: relative;
+  z-index: 999;
 }
 
 .country-popup span {
-  font-weight: bold;
+  font-family: "roboto bold";
 }
 
+.country-name {
+  font-size: 2rem;
+}
 .flag-popup {
   /* filter: url(#wave); */
   font-size: 6rem;
+  line-height: 0%;
+}
+
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

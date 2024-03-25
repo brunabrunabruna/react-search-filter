@@ -71,7 +71,7 @@ function App() {
         <input
           className="search-box"
           type="text"
-          placeholder="search..."
+          placeholder="search country..."
           onChange={(event) => {
             setSearchedTerm(event.target.value);
           }}

@@ -16,13 +16,17 @@ const CountryCard = (props: {
     countryFlag = false;
   }
   return (
-    <div>
+    <div className="country-wrapper">
       <div className="country" onClick={props.handleClick}>
         <p>{props.country.name}</p>
         <p className="flag">{countryCode ? countryFlag : ""}</p>
       </div>
       {props.country === props.selectedCountry && (
-        <CountryPopup country={props.country} flag={countryFlag} />
+        <CountryPopup
+          country={props.country}
+          flag={countryFlag}
+          handleClick={props.handleClick}
+        />
       )}
     </div>
   );
