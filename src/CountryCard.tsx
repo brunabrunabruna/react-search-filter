@@ -9,25 +9,20 @@ const CountryCard = (props: {
   handleClick: () => void;
 }) => {
   const countryCode = getCountryCode(props.country.name);
-  // console.log(element.capital);
-  // const extraInfos = () => {
-  //   if (props.isExtraInfosVisible) {
-  //     return (
-  //       <div className="extra-infos">
-  //         <p>capital: {props.country.capital}</p>
-  //         <p>currency: {props.country.currency}</p>
-  //       </div>
-  //     );
-  //   }
-  // };
+  let countryFlag: string | false;
+  if (countryCode) {
+    countryFlag = getEmojiFlag(countryCode);
+  } else {
+    countryFlag = false;
+  }
   return (
     <div>
       <div className="country" onClick={props.handleClick}>
         <p>{props.country.name}</p>
-        <p className="flag">{countryCode ? getEmojiFlag(countryCode) : ""}</p>
+        <p className="flag">{countryCode ? countryFlag : ""}</p>
       </div>
       {props.country === props.selectedCountry && (
-        <CountryPopup country={props.country} />
+        <CountryPopup country={props.country} flag={countryFlag} />
       )}
     </div>
   );

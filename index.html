@@ -7,7 +7,41 @@
     <title>search filter</title>
   </head>
   <body>
+    <!-- svg -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="wave">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0"
+            numOctaves="1"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in2="turbulence"
+            in="SourceGraphic"
+            scale="10"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
+
     <div id="root"></div>
+
+    <!-- script -->
+    <script>
+      let t = 0;
+      const filter = document.querySelector("#wave feTurbulence");
+
+      setInterval(() => {
+        const baseFrequency = 0.01 + 0.02 * Math.sin(2 * Math.PI - t);
+        filter.setAttribute("baseFrequency", `${baseFrequency} 0`);
+        t += 0.1;
+        // console.log(Math.sin(t));
+      }, 100);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

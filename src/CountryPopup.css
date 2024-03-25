@@ -1,0 +1,20 @@
+.country-popup {
+  width: 25rem;
+  height: 20rem;
+  background-color: var(--dark-gray);
+  border-radius: 1rem;
+  margin-top: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.country-popup span {
+  font-weight: bold;
+}
+
+.flag-popup {
+  /* filter: url(#wave); */
+  font-size: 6rem;
+}
