@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import ContinentFilter from "./ContinentFilter";
+import CountryCard from "./CountryCard";
+
 // Interfaces and types
 import type {
   ICountry,
@@ -12,7 +15,7 @@ import type {
 } from "countries-list";
 
 // Main data and utils
-import { continents, countries, languages } from "countries-list";
+import { countries, languages } from "countries-list";
 // Utils
 import {
   getCountryCode,
@@ -20,12 +23,11 @@ import {
   getCountryDataList,
   getEmojiFlag,
 } from "countries-list";
-import CountryCard from "./CountryCard";
 
 function App() {
   // const wordsList: string[] = ["hi", "hello", "good", "goodbye"];
   // console.log(countries);
-  console.log(Object.values(countries));
+  // console.log(Object.values(countries));
 
   //state which contains the value (what is being typed) in the search input
   const [searchedTerm, setSearchedTerm] = useState("");
@@ -33,16 +35,18 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState<ICountry | null>(null);
   //function that handles search through our data. first it filters through the given array of data, and checks if the search bar is empty(returns all data), or if there are elements in the array that contain the searched term. If yes, it returns the element(s) in a new array.
   // secondly the new array is mapped into a div, containing each individual element, which will then be rendered into our page.
-  const countriesListLayout = (list: TCountries) => {
+  const countriesListLayout = (countriesList: TCountries) => {
     //Object.values converts the countries object into an array, so the filter and map methods can work
-    return Object.values(list)
-      .filter((listElement) => {
+    return Object.values(countriesList)
+      .filter((countriesListElement) => {
         if (searchedTerm === "") {
-          return listElement;
+          return countriesListElement;
         } else if (
-          listElement.name.toLowerCase().includes(searchedTerm.toLowerCase())
+          countriesListElement.name
+            .toLowerCase()
+            .includes(searchedTerm.toLowerCase())
         ) {
-          return listElement;
+          return countriesListElement;
         }
       })
       .map((element, key) => {
@@ -68,14 +72,17 @@ function App() {
         className="app"
         onClick={() => (selectedCountry ? setSelectedCountry(null) : "")}
       >
-        <input
-          className="search-box"
-          type="text"
-          placeholder="search country..."
-          onChange={(event) => {
-            setSearchedTerm(event.target.value);
-          }}
-        />
+        <div className="nav">
+          <input
+            className="search-box"
+            type="text"
+            placeholder="search country..."
+            onChange={(event) => {
+              setSearchedTerm(event.target.value);
+            }}
+          />
+          <ContinentFilter />
+        </div>
 
         <div className="countries">{countriesListLayout(countries)}</div>
       </div>

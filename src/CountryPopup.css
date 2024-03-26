@@ -10,6 +10,7 @@
   transform: translateX(-50%) translateY(-50%);
   font-size: 1.5rem;
   z-index: 999;
+  filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.3));
 }
 .country-popup-layout {
   position: relative;

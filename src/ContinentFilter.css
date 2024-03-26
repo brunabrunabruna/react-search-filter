@@ -1,0 +1,17 @@
+.continents {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 7rem;
+  width: 100vw;
+  background-color: var(--lighter-background);
+}
+
+.continent {
+  font-size: 1rem;
+  /* width: 10rem; */
+  margin: 0.5rem 1rem;
+  border-radius: 10px;
+}

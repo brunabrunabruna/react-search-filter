@@ -15,11 +15,11 @@ const CountryPopup = (props: {
         <p className="country-name">{props.country.name}</p>
         <p>
           <span>Capital:</span>
-          {props.country.capital ? ` ${props.country.capital}` : "-"}
+          {props.country.capital ? ` ${props.country.capital}` : " -"}
         </p>
         <p>
           <span>Currency:</span>
-          {props.country.currency ? ` ${props.country.currency}` : "-"}
+          {props.country.currency ? ` ${props.country.currency}` : " -"}
         </p>
         <p>
           <span>Continent:</span>
