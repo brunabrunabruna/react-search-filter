@@ -20,13 +20,10 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState<ICountry | null>(null);
   const [selectedContinent, setSelectedContinent] =
     useState<TContinentCode | null>(null);
-  //function that handles search through our data. first it filters through the given array of data, and checks if the search bar is empty(returns all data), or if there are elements in the array that contain the searched term. If yes, it returns the element(s) in a new array.
-  // secondly the new array is mapped into a div, containing each individual element, which will then be rendered into our page.
-  const countriesListLayout = (countriesList: TCountries) => {
-    console.log(selectedContinent);
-    //Object.values converts the countries object into an array, so the filter and map methods can work
 
+  const countriesListLayout = (countriesList: TCountries) => {
     return (
+      //Object.values converts the countries object into an array containing only its values (object structure is KEY: VALUE), so the filter and map methods can work.
       Object.values(countriesList)
         //filters countries based on the selected continent. by default all the countries are showns (!selectedContinent condition), since there is no selected continent yet. If a continent button is clicked, and a continent then selected, only the countries that have that continent property will match the condition, and therefore be added to the new array.
         .filter((country) => {
@@ -45,6 +42,7 @@ function App() {
             return country;
           }
         })
+        // secondly the new array is mapped into a div, containing each individual element, which will then be rendered into our page.
         .map((element, key) => {
           //defining the function which is activated when the country card is clicked. if there was a visible popup it hides it, if there was none visible, it sets it to visible, as well as sets the selected country as the currently clicked country.
           const handleClick = (): void => {
@@ -71,7 +69,7 @@ function App() {
         onClick={() => (selectedCountry ? setSelectedCountry(null) : "")}
       >
         <div className="nav">
-          search
+          {/* search input, sets searched term to the current typed value */}
           <input
             className="search-box"
             type="text"
@@ -80,6 +78,7 @@ function App() {
               setSearchedTerm(event.target.value);
             }}
           />
+          {/* buttons that show all the continets */}
           <ContinentFilter
             selectedCountry={selectedCountry}
             selectedContinent={selectedContinent}
