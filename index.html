@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/react-search-filter/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search filter</title>
+    <script type="module" crossorigin src="/react-search-filter/assets/index-C-vi9MYx.js"></script>
+    <link rel="stylesheet" crossorigin href="/react-search-filter/assets/index-1JI7eYfP.css">
+  </head>
+  <body>
+    <!-- svg -->
+    <!-- styling the svg so it is not visible on the page and does not interphere with the layout -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      style="position: fixed; top: -10rem"
+    >
+      <defs>
+        <filter id="wave">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.02 0"
+            numOctaves="1"
+            result="turbulence"
+          />
+          <feOffset in="turbulence" dx="0" dy="0" result="turb2" />
+          <feDisplacementMap
+            in2="turb2"
+            in="SourceGraphic"
+            scale="30"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="root"></div>
+
+    <script>
+      // let t = 0;
+      // const filter = document.querySelector("#wave feTurbulence");
+
+      // setInterval(() => {
+      //   // const baseFrequency = 0.02 * Math.sin(-t);
+      //   const baseFrequency = `0.02`;
+      //   filter.setAttribute("baseFrequency", `${baseFrequency} 0`);
+      //   t += 0.1;
+      // }, 100);
+
+      let t = 0;
+      const filter = document.querySelector("#wave feOffset");
+      let d = 1;
+      setInterval(() => {
+        filter.setAttribute("dx", `${Math.sin(t * 0.04) * 100}`);
+        // filter.setAttribute("dx", `${t}`);
+
+        // t += d * 5;
+        // if (t < 0 || t > 100) {
+        //   d *= -1;
+        // }
+
+        t += 1;
+      }, 100);
+    </script>
+  </body>
+</html>
