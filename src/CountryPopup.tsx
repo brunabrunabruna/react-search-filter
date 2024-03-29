@@ -1,5 +1,4 @@
 import { ICountry, languages } from "countries-list";
-import React from "react";
 import "./CountryPopup.css";
 import { GrClose } from "react-icons/gr";
 
