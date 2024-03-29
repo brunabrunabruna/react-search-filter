@@ -1,5 +1,4 @@
 import { ICountry, getCountryCode, getEmojiFlag } from "countries-list";
-import React from "react";
 import CountryPopup from "./CountryPopup";
 
 const CountryCard = (props: {

@@ -24,7 +24,7 @@
   font-size: 2rem;
 }
 .flag-popup {
-  /* filter: url(#wave); */
+  filter: url(#wave);
   font-size: 6rem;
   line-height: 0%;
 }

@@ -13,14 +13,15 @@
         <filter id="wave">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.01 0"
+            baseFrequency="0.02 0"
             numOctaves="1"
             result="turbulence"
           />
+          <feOffset in="turbulence" dx="0" dy="0" result="turb2" />
           <feDisplacementMap
-            in2="turbulence"
+            in2="turb2"
             in="SourceGraphic"
-            scale="10"
+            scale="30"
             xChannelSelector="R"
             yChannelSelector="G"
           />
@@ -30,16 +31,30 @@
 
     <div id="root"></div>
 
-    <!-- script -->
     <script>
-      let t = 0;
-      const filter = document.querySelector("#wave feTurbulence");
+      // let t = 0;
+      // const filter = document.querySelector("#wave feTurbulence");
 
+      // setInterval(() => {
+      //   // const baseFrequency = 0.02 * Math.sin(-t);
+      //   const baseFrequency = `0.02`;
+      //   filter.setAttribute("baseFrequency", `${baseFrequency} 0`);
+      //   t += 0.1;
+      // }, 100);
+
+      let t = 0;
+      const filter = document.querySelector("#wave feOffset");
+      let d = 1;
       setInterval(() => {
-        const baseFrequency = 0.01 + 0.02 * Math.sin(2 * Math.PI - t);
-        filter.setAttribute("baseFrequency", `${baseFrequency} 0`);
-        t += 0.1;
-        // console.log(Math.sin(t));
+        filter.setAttribute("dx", `${Math.sin(t * 0.04) * 100}`);
+        // filter.setAttribute("dx", `${t}`);
+
+        // t += d * 5;
+        // if (t < 0 || t > 100) {
+        //   d *= -1;
+        // }
+
+        t += 1;
       }, 100);
     </script>
     <script type="module" src="/src/main.tsx"></script>
